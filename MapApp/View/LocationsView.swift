@@ -18,11 +18,21 @@ struct LocationsView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                
                 header
                     .padding()
                 
                 Spacer()
+                
+                ZStack {
+                    ForEach(vm.locations) { local in
+                        if vm.currentMapLocation == local {
+                            LocationPreviewView(location: local)
+                                .shadow(radius: 5)
+                                .padding()
+                                .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
+                        }
+                    }
+                }
             }
             
             
@@ -39,7 +49,6 @@ struct LocationsView_Previews: PreviewProvider {
 
 
 extension LocationsView {
-    
     private var header: some View {
         VStack {
             Button {

@@ -51,4 +51,8 @@ final class LocationsViewModel: ObservableObject {
         currentMapLocation = location
         showListLocations = false
     }
+    
+    func nextButton() {
+        
+    }
 }
